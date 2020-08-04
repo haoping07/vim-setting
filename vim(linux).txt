@@ -1,0 +1,110 @@
+"設定檔案的程式碼形式 utf8
+"set encoding=utf-8
+"set termencoding=utf-8
+set fileencoding=utf-8
+"set fileencodings=ucs-bom,utf-8,chinese,cp936
+ 
+"vim的選單亂碼解決
+"source $VIMRUNTIME/delmenu.vim
+"source $VIMRUNTIME/menu.vim
+ 
+"vim提示資訊亂碼的解決
+"language messages zh_CN.utf-8
+ 
+filetype on
+filetype plugin indent on
+"colorscheme evening	"配色方案
+"colorscheme desert
+"set helplang=cn		"設定中文幫助
+"set history=500		"保留歷史記錄
+set guifont=Consolas:h14	"設定字型為Monaco，大小10
+set tabstop=4		"設定tab的跳數
+set expandtab
+set backspace=2 	"設定退格鍵可用
+set nu! 		"設定顯示行號
+set wrap 		"設定自動換行
+"set nowrap 		"設定不自動換行
+set linebreak 		"整詞換行，與自動換行搭配使用
+"set list 		"顯示製表符
+set autochdir 		"自動設定當前目錄為正在編輯的目錄
+set hidden 		"自動隱藏沒有儲存的緩衝區，切換buffer時不給出儲存當前buffer的提示
+set scrolloff=5 	"在游標接近底端或頂端時，自動下滾或上滾
+"Toggle Menu and Toolbar 	"隱藏選單欄和工具欄
+"set guioptions-=m
+"set guioptions-=T
+set showtabline=2 	"設定顯是顯示標籤欄
+set autoread 		"設定當檔案在外部被修改，自動更新該檔案
+set tabstop=4         
+set softtabstop=4     
+set shiftwidth=4     
+set expandtab       
+set mouse=a 		"設定在任何模式下滑鼠都可用
+set nobackup 		"設定不生成備份檔案
+set noswapfile
+set noundofile
+
+"set go=				"不要圖形按鈕
+set guioptions-=T           " 隱藏工具欄
+"set guioptions-=m           " 隱藏選單欄
+ 
+"===========================
+"查詢/替換相關的設定
+"===========================
+set hlsearch "高亮顯示查詢結果
+set incsearch "增量查詢
+ 
+"===========================
+"狀態列的設定
+"===========================
+set statusline=[%F]%y%r%m%*%=[Line:%l/%L,Column:%c][%p%%] "顯示檔名：總行數，總的字元數
+set ruler "在編輯過程中，在右下角顯示游標位置的狀態行
+ 
+"===========================
+"程式碼設定
+"===========================
+syntax enable "開啟語法高亮
+syntax on "開啟語法高亮
+set showmatch "設定匹配模式，相當於括號匹配
+set smartindent "智慧對齊
+"set shiftwidth=4 "換行時，交錯使用4個空格
+set autoindent "設定自動對齊
+set ai! "設定自動縮排
+"set cursorcolumn "啟用游標列
+"set cursorline "設定高亮當前行(這裡我註釋了)
+hi CursorLine   cterm=NONE ctermbg=darkred ctermfg=white guibg=darkred guifg=white
+set guicursor+=a:blinkon0 "設定游標不閃爍
+set fdm=indent "
+ 
+ 
+" 關閉NERDTree快捷鍵
+map <leader>t :NERDTreeToggle<CR>
+" 顯示行號
+let NERDTreeShowLineNumbers=1
+let NERDTreeAutoCenter=1
+" 是否顯示隱藏檔案
+let NERDTreeShowHidden=1
+" 設定寬度
+let NERDTreeWinSize=21
+" 在終端啟動vim時，共享NERDTree
+let g:nerdtree_tabs_open_on_console_startup=1
+" 忽略一下檔案的顯示
+let NERDTreeIgnore=['\.pyc','\~$','\.swp']
+" 顯示書籤列表
+let NERDTreeShowBookmarks=1
+
+inoremap { {}<ESC>i 
+hi MatchParen ctermbg=DarkRed guibg=lightblue  
+set clipboard=unnamed
+set number 
+set smartindent
+
+inoremap ( ()<left>
+inoremap [ []<left>
+inoremap { {}<left>
+inoremap {<CR> {<CR>}<ESC>O
+inoremap {;<CR> {<CR>};<ESC>O
+inoremap <expr> ) strpart(getline('.'), col('.')-1, 1) == ")" ? "\<Right>" : ")"
+inoremap <expr> ] strpart(getline('.'), col('.')-1, 1) == "]" ? "\<Right>" : "]"
+set cino+=g0
+
+set nofoldenable
